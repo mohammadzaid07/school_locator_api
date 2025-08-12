@@ -57,27 +57,49 @@ npm install
    );
    ```
 
-### 4. Configure Database Credentials
+### 4. Configure Database Credentials Using `.env`
 
-Edit the `index.js` file and update the MySQL connection config:
+Create a `.env` file in the root of your project and add the following (without quotes or extra spaces):
+
+```
+PORT=3000
+DB_HOST=localhost
+DB_USER=your_mysql_user
+DB_PASSWORD=your_mysql_password
+DB_DATABASE=your_db_name
+```
+
+**Note:**
+
+- Replace each value with your actual MySQL and application configuration.
+- Never commit your `.env` file to public repositories.
+
+### 5. Update Database Configuration in the Code
+
+Ensure your `index.js` uses the environment variables:
 
 ```js
+import dotenv from 'dotenv';
+dotenv.config();
+
 const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'your_mysql_user',
-    password: 'your_mysql_password',
-    database: 'your_db_name',
-    // ...rest config
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
 });
 ```
 
-### 5. Start the Server
+### 6. Start the Server
 
 ```sh
 node index.js
 ```
 
-Server should run on `http://localhost:3000`.
+Server should run on `http://localhost:3000` (or the port you set in `.env`).
 
 ---
 
@@ -163,6 +185,7 @@ Server should run on `http://localhost:3000`.
 .
 ├── index.js          # Main API server
 ├── package.json      # NPM dependencies
+├── .env              # Environment variables (DO NOT COMMIT)
 └── README.md         # This documentation
 ```
 
@@ -170,9 +193,9 @@ Server should run on `http://localhost:3000`.
 
 ## Customization & Deployment
 
-- **Environment Variables:** For production, consider using [dotenv](https://www.npmjs.com/package/dotenv) for environment variables.
+- **Environment Variables:** For production, always use environment variables and keep your `.env` file secure.
 - **Error Handling:** Extend error handling as required.
-- **Deployment:** Can be deployed to any Node.js-friendly platform (Heroku, Render, AWS, etc.).
+- **Deployment:** Can be deployed to any Node.js-friendly platform (Heroku, Render, AWS, etc.). Set the environment variables in your host's dashboard.
 - **Security:** Use HTTPS and proper authentication mechanisms for production.
 
 ---
