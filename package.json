@@ -1,11 +1,12 @@
 {
-  "name": "school_management",
+  "name": "school_locator_api",
   "version": "1.0.0",
-  "description": "API to manage school data",
+  "description": "API to locate nearby schools",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "node index.js"
+    "dev": "node index.js",
+    "start": "node index.js"
   },
   "keywords": [
     "node",
