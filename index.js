@@ -9,10 +9,10 @@ const app = express();
 app.use(bodyParser.json());
 
 const port = process.env.PORT || 3000;
-const db_host = process.env.DB_HOST;
-const db_user = process.env.DB_USER;
-const db_password = process.env.DB_PASSWORD;
-const db_name = process.env.DB_NAME;
+const db_host = String(process.env.DB_HOST);
+const db_user = String(process.env.DB_USER);
+const db_password = String(process.env.DB_PASSWORD);
+const db_name = String(process.env.DB_NAME);
 
 // Configure your MySQL connection here
 const pool = mysql.createPool({
