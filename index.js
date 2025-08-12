@@ -13,6 +13,7 @@ const db_host = String(process.env.DB_HOST);
 const db_user = String(process.env.DB_USER);
 const db_password = String(process.env.DB_PASSWORD);
 const db_name = String(process.env.DB_NAME);
+const db_port = process.env.DB_NAME;
 
 // Configure your MySQL connection here
 const pool = mysql.createPool({
@@ -20,6 +21,7 @@ const pool = mysql.createPool({
     user: db_user,
     password: db_password,
     database: db_name,
+    port: db_port,
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
