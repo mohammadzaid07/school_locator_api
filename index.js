@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 app.use(bodyParser.json());
 
-const port = process.env.PORT || 3000;
+const port = Number(process.env.PORT) || 3000;
 const db_host = String(process.env.DB_HOST);
 const db_user = String(process.env.DB_USER);
 const db_password = String(process.env.DB_PASSWORD);
