@@ -1,0 +1,22 @@
+{
+  "name": "school_management",
+  "version": "1.0.0",
+  "description": "API to manage school data",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "keywords": [
+    "node",
+    "api"
+  ],
+  "author": "MOHAMMAD ZAID",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.3"
+  }
+}
